@@ -1,0 +1,191 @@
+<script type="text/javascript">
+        var gk_isXlsx = false;
+        var gk_xlsxFileLookup = {};
+        var gk_fileData = {};
+        function filledCell(cell) {
+          return cell !== '' && cell != null;
+        }
+        function loadFileData(filename) {
+        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
+            try {
+                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
+                var firstSheetName = workbook.SheetNames[0];
+                var worksheet = workbook.Sheets[firstSheetName];
+
+                // Convert sheet to JSON to filter blank rows
+                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
+                // Filter out blank rows (rows where all cells are empty, null, or undefined)
+                var filteredData = jsonData.filter(row => row.some(filledCell));
+
+                // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
+                var headerRowIndex = filteredData.findIndex((row, index) =>
+                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
+                );
+                // Fallback
+                if (headerRowIndex === -1 || headerRowIndex > 25) {
+                  headerRowIndex = 0;
+                }
+
+                // Convert filtered JSON back to CSV
+                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
+                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
+                return csv;
+            } catch (e) {
+                console.error(e);
+                return "";
+            }
+        }
+        return gk_fileData[filename] || "";
+        }
+        </script><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Further Improved Web Programming Ad with Enhanced Limited Seats Text</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #6b2d5c, #9b4e7d);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .ad-container {
+            width: 600px;
+            height: 400px;
+            background: #fff;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            background: url('https://www.transparenttextures.com/patterns/diagonal-striped-brick.png'), #fff;
+            border: 2px solid #28a745; /* Green border for Pakistani flag color */
+        }
+        .logo {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #fff;
+            background: #f5c518;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+        .logo span {
+            color: #d32f2f;
+        }
+        .header {
+            font-family: 'Noto Nastaliq Urdu', serif;
+            font-size: 48px;
+            color: #f5c518;
+            text-align: center;
+            margin: 50px 0 0;
+            font-weight: bold;
+            line-height: 1.2;
+        }
+        .tech-stack {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 10px;
+            margin-top: 50px;
+        }
+        .tech-item {
+            background: #28a745; /* Green for Pakistani flag color */
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 10px;
+            font-weight: bold;
+            font-size: 16px;
+        }
+        .price {
+            font-family: 'Noto Nastaliq Urdu', serif;
+            font-size: 30px;
+            color: #d32f2f;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .discount {
+            font-family: 'Noto Nastaliq Urdu', serif;
+            font-size: 18px;
+            color: #6b2d5c;
+            text-align: center;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+        .cta-button {
+            background: #25d366;
+            color: #fff;
+            padding: 10px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-family: 'Noto Nastaliq Urdu', serif;
+            font-size: 18px;
+            font-weight: bold;
+            display: inline-block;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        .cta-button:hover {
+            background: #20c058;
+        }
+        .limited-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: linear-gradient(135deg, #ff3333, #cc0000); /* Gradient for more depth */
+            color: #fff;
+            padding: 2px 3px;
+            border-radius: 5px;
+            font-family: 'Noto Nastaliq Urdu', serif;
+            font-size: 16px; /* Slightly larger for prominence */
+            font-weight: bold;
+            box-shadow: 0 0 12px rgba(255, 0, 0, 0.7); /* Stronger glow */
+            border: 2px solid #fff; /* White border for contrast */
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .limited-badge::before {
+            content: "⚡"; /* Exclamation mark icon for urgency */
+            font-size: 16px;
+        }
+        .icon {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            font-size: 72px;
+        }
+    </style>
+</head>
+<body>
+    <div class="ad-container">
+        <div class="logo"><span>RoshanTech</span> | eSite.pk | 0300-5393-652</div>
+        <div class="limited-badge">سیٹیں محدود ہیں!</div>
+        <div class="header">ویب پروگرامنگ کورس</div>
+        <div class="tech-stack">
+            <div class="tech-item">HTML/CSS</div>
+            <div class="tech-item">JavaScript</div>
+            <div class="tech-item">PHP/MySQL</div>
+        </div>
+        <div class="price">مہینہ PKR 5,000</div>
+        <div class="discount">پہلے 10 طلباء کے لیے 25% تک رعایت!</div>
+        <a href="https://wa.me/923005393652" class="cta-button">واٹس ایپ پر میسج کریں</a>
+        <div class="icon">💻</div>
+    </div>
+</body>
+</html>
